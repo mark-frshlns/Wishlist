@@ -3,9 +3,7 @@ const db = require('../../models');
 module.exports = {
 
   findAllItems: function(req, res){
-        db.Item.findAll({include:[{
-          model: db.Category,
-        }]}).then(function(data){
+        db.Item.findAll({}).then(function(data){
           if(!data){
             res.status(404).json({msg:"no items found"});
           }
@@ -14,9 +12,7 @@ module.exports = {
         })
   },
   findAllCategories: function(req,res){
-      db.Category.findAll({include:[{
-        model:db.Item,
-      }]}).then(function(data){
+      db.Category.findAll({}).then(function(data){
         if(!data){
           res.status(404).json({msg:"no categories"});
 
@@ -25,10 +21,18 @@ module.exports = {
       })
   },
   findAllItemsCategories: function(req, res){
-      
+    db.Category.findAll({include:[{
+      model:db.Item
+    }]}).then(function(data){
+      if(!data){
+        res.status(404).json({msg:"no categories"});
+
+      }
+      res.status(200).json(data);
+    })
   },
 
-  findByCategory: function(req, res){
+  findByCategoryId: function(req, res){
 
   },
   updateItem: function(req, res){
