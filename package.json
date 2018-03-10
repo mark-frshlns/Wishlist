@@ -1,0 +1,22 @@
+{
+  "name": "stanthony_wishlist",
+  "version": "0.0.1",
+  "description": "st anthony orthodox church wishlist app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Mark Soliman",
+  "license": "ISC",
+  "devDependencies": {
+    "morgan": "^1.9.0"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.2.0",
+    "path": "^0.12.7",
+    "sequelize": "^4.35.5"
+  }
+}
