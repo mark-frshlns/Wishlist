@@ -7,8 +7,8 @@ class App extends Component {
       <div className="App">
         <Router>
           <Switch>
-              <Route exact path="/" component={WishList} />
-              <Route exact path="/dashboard" component={DashBoard} />
+              <Route exact path="/WishList" component={WishList} />
+              <Route exact path="/Admin-WishList" component={DashBoard} />
           </Switch>
         </Router>
       </div>

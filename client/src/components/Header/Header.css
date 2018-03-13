@@ -1,0 +1,25 @@
+.header{
+  
+  background-image: url("/assets/Images/pattern_5_thumb.png");
+  position: relative;
+  margin-bottom: 0px;
+  box-shadow: 2px 2px 4px grey;
+  border-bottom: 1px solid rgba(63, 32, 7, 0.747);
+  border-radius: 0;
+}
+.layer{
+  background-color:rgba(163, 100, 42, 0.411);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left:0;
+  top:0;
+}
+.header>div>a>img{
+  padding: 10%;
+}
+@media only screen and (max-width:460){
+  .header>div>a>img{
+    padding: 0%;
+  }
+}

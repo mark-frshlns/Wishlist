@@ -28,8 +28,13 @@ module.exports = {
           })
       },
       checkAuthToken: function(req, res, next){
-
-            console.log("reached");
+            if(req.usedId){
+              res.status(200).json({auth:true, Token:req.headers['x-access-token']});
+            }
+            else{
+              res.status(401).json({auth:false, Token:null});
+            }
+            
 
       }
 
