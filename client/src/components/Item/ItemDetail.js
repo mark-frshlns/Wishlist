@@ -5,10 +5,9 @@ const ItemDetail = (props)=>{
         return (
           <div className={props.col}>
               
-                <span className="title">Item</span>
+                <span className="title text-muted"><i>{props.item.item_name.toUpperCase()}</i></span>
                 <hr />
-                <h5>{props.item.item_name}</h5>
-                <p><i>{`Price: $${props.item.item_price}`}</i></p>
+                <h3 style={{fontWeight:900}} className="text-danger">{`$${props.item.item_price}`}</h3>
               
           </div>
         )

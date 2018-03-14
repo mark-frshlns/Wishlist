@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Header} from '../../components/Header';
 import {default as API} from '../../util/USERAPI';
 import {default as DashboardLogin} from '../../components/DashboardLogin';
 
@@ -31,7 +30,7 @@ export default class DashBoard extends Component {
   render(){
     return (
       <div className="container-fluid">
-        <Header />
+        
         {this.state.auth ? <div />:
           (
           <div className="row">

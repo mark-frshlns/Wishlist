@@ -6,3 +6,6 @@ body {
   padding: 0;
   
 }
+.row{
+  min-height: 1px;
+}

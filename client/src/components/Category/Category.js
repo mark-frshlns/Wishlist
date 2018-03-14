@@ -11,47 +11,66 @@ export default class Category extends Component {
           id:props.category.id,
           name:props.category.category_name.toUpperCase(),
           items:props.category.Items,
-          icon: "fa fa-plus",
-          
+          icon: "fa fa-angle-down",
+
         }
       }
       componentWillMount(){
         if(this.state.location < 2){
           this.setState({
             open:true,
-            icon: "fa fa-minus"
+            icon: "fa fa-angle-up"
           })
         }
       }
-      
-      handleClick = (e) => { 
-        
-        
-        
-
-        if(this.state.open===false){
+      submitDonateRequest = (id)=>{
+            const item_contributed = parseInt(document.getElementById("amount_picker"+id).value, 10);
+            console.log({id:id,item_contributed:item_contributed})
+      }
+      handleSelectedQuantityChange = (e)=>{
+        // this.setState({selectedQuantity:e.target.value});
+        const dummy = {...this.state.selectedQuantity};
+        dummy.itemId = e.target.id.split('r')[1];
+        dummy.amount = e.target.value;
+        console.log(dummy);
+        this.setState({selectedQuantity:dummy});
+      }
+      handleAddSubtractQuantity = (id, opr, max)=>{
+            const input = document.getElementById("amount_picker"+id);
+            
+            if(opr === "add"){
+              if(input.value >= max){
+                input.value=max;
+              }else{
+                input.value++;
+              }
+            }
+            else if(opr === "subt"){
+              if(input.value-1 < 0){
+                  input.value=0
+              }else{
+                input.value--;
+              }
+            }
           
-        
+      }
+      handleClick = (e) => { 
+        if(this.state.open===false){
           this.setState({open:true,
-                          icon: "fa fa-minus"})
+                          icon: "fa fa-angle-up"});
         }
         else{
-
-          
-          
           this.setState({open:false,
-                          icon: "fa fa-plus"})
+                          icon: "fa fa-angle-down"});
         }
-
       }
       styles = {
         background: "url('/assets/Images/pattern_5_thumb.png') fixed center",
         zIndex: 99,
         textAlign: "center",
         color: "whitesmoke",
-        marginTop:"16px",
-        boxShadow:"0 0 0.3rem grey",
         
+        boxShadow:"0 0 0.3rem grey"
       }
       
       render(){
@@ -59,9 +78,9 @@ export default class Category extends Component {
           <div>
               <div className="row categoryHeader">
                 <div className="col-md-1 col-sm-1" />
-                <div className="col-md-10 col-sm-10"  id={this.state.name} style={this.styles}>
-                    <span className="layer" style={{zIndex:-99,background:"rgba(0,0,0,0.8)"}} /> 
-                    <a className="btn btn-secondary clicks" type="button" name={this.state.name}   onClick={this.handleClick} style={{float:"left",
+                <div className="col-md-10 col-sm-10 mainCategory"  id={this.state.name} style={this.styles}>
+                    <span className="layer" style={{zIndex:-99}} /> 
+                    <a className="btn bg-dark clicks" type="button" name={this.state.name}   onClick={this.handleClick} style={{float:"left",
                                   fontWeight:"900",
                                   margin:"0.5%",
                                   display:"inline-block",
@@ -73,8 +92,14 @@ export default class Category extends Component {
                 </div>
                 <div className="col-md-1 col-sm-1" />
               </div>
-              {this.state.items.map((item, i)=>{
-                return (<Item key={i} visible={this.state.open} item={item} col="col-sm-2 col-md-2" innerContainer="innerContainer"/>)
+              {this.state.items.map((item, i, array)=>{
+                return (<Item key={i} visible={this.state.open} 
+                              item={item} col="col-sm-2 col-md-2" 
+                              quantityChange={this.handleSelectedQuantityChange}
+                              quantityClick={this.handleAddSubtractQuantity}
+                              Item_Submit={this.submitDonateRequest}
+                              last={(i === (array.length-1)) ? true:false}/>
+                              )
               })}
               
            </div>   

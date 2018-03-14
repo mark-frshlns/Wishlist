@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {Header} from '../../components/Header';
 import {default as API} from '../../util/API';
 import {default as Category} from '../../components/Category';
 
@@ -20,8 +19,8 @@ export default class Wishlist extends Component {
     }
     render(){
       return(
-        <div className="container-fluid ">
-            <Header />
+        
+            <div>
             {this.state.data.length > 0 ? (
                 this.state.data.map((cat,i)=>{
                   return (<Category category={cat} key={i} indicator={i} />)
@@ -29,9 +28,9 @@ export default class Wishlist extends Component {
             )
             :
             (
-              <div>{"no data"}</div>
+              null
             )}
-        </div>
+            </div>
       )
     }
 }
