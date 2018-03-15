@@ -1,0 +1,30 @@
+.header{
+  
+  background-image: url("/assets/Images/pattern_5_thumb.png");
+  position: relative;
+  margin-bottom: 0px;
+  box-shadow:0 0.1rem 0.1rem rgba(48,63,63,0.6);
+  
+  border-radius: 0;
+  z-index:99;
+}
+.layer{
+  
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left:0;
+  top:0;
+  z-index:-50;
+  background: rgb(18, 72, 99);
+  opacity:0.7;
+}
+.header>div>a>img{
+  padding: 10%;
+  z-index:1000;
+}
+@media only screen and (max-width:460){
+  .header>div>a>img{
+    padding: 0%;
+  }
+}

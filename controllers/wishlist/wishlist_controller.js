@@ -36,7 +36,16 @@ module.exports = {
 
   },
   updateItem: function(req, res){
+            let id = req.params.id;
+            let data = req.body;
+            db.Item.update(data,{where:{id:id}}).then(function(item){
+                
+                db.Item.findOne({where:{id:id}}).then(result=>{
+                  res.status(200).json(result);
+                })
+            }).catch(function(err){
 
+            })
   },
   deleteItem: function(req, res){
 
