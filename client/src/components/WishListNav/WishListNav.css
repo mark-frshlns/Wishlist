@@ -2,11 +2,13 @@
   margin-top:0;
   padding:0;
   border:none;
-  border-bottom:1px solid rgba(48,63,63,0.7);
+  border-bottom:1px solid rgba(48,63,63,0.5);
+  
   margin-bottom: 2%;
-  box-shadow:0 0rem 0.1rem rgba(48,63,63,0.6);
+  box-shadow:0 0rem 0.1rem rgba(48,63,63,0.3);
   background-image: url("/assets/Images/pattern_5_thumb.png");
   z-index:99;
+  
 }
 .navbar>.nav>.nav-item{
   padding:1px;

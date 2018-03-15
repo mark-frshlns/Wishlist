@@ -9,9 +9,9 @@ const ItemDonateBtn = (props)=>{
         <span className="title text-muted"><i>Quantity</i></span>
         <hr />
         <div className="input-group input-group-small quantity">
-          <button  type="submit" className="btn bg-dark" id={`subt`} onClick={()=>{props.onClick(props.item.id, "subt", max)}}><span className="fa fa-minus text-white text-justify"/></button>
+          <button  type="submit" className="btn bg-danger text-center" id={`subt`} onClick={()=>{props.onClick(props.item.id, "subt", max)}}><span className="fa fa-minus text-white"/></button>
           <input type="number" name="amount" min="1" max={max} onKeyDown={()=>{return false}} id={`amount_picker${props.item.id}`} onChange={props.qChange}  />
-          <button  type="submit" className="btn bg-dark"  id={`add`} onClick={()=>{props.onClick(props.item.id, "add", max)}}><span className="fa fa-plus text-white text-justify" /></button>        
+          <button  type="submit" className="btn bg-success text-center"  id={`add`} onClick={()=>{props.onClick(props.item.id, "add", max)}}><span className="fa fa-plus text-white" /></button>        
         </div>
         <button className="btn btn-block bg-dark text-white" type="submit" onClick={()=>{props.Item_Submit(props.item.id)}}>DONATE <i className="fa fa-thank-you"/></button>
        </div>

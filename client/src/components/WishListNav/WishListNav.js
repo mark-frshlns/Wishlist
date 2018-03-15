@@ -12,7 +12,7 @@ export default class WishListNav extends Component {
           return(
             
             
-             <nav className="row navbar navbar-expand-lg navbar-light justify-content-left">
+             <nav className="row navbar navbar-expand-lg navbar-light justify-content-left position-sticky">
                   <div className="layer"/>
                   <span className="col-md-1 col-sm-1" />
                   <ul className="nav nav-tabs ">
@@ -20,11 +20,12 @@ export default class WishListNav extends Component {
                             <NavLink className="nav-link bg-dark text-white" activeStyle={{borderBottom:"3px solid  rgb(18, 72, 99)"}} to="/Home">Home</NavLink>
                       </li>
                       <li className="nav-item">
-                            <NavLink className="nav-link bg-dark text-white" activeStyle={{borderBottom:"3px solid  rgb(18, 72, 99)"}} to="/Admin-WishList">Dashboard</NavLink>
-                      </li>
-                      <li className="nav-item">
                              <NavLink className="nav-link bg-dark text-white" activeStyle={{borderBottom:"3px solid  rgb(18, 72, 99)"}} to="/WishList">New Church Wishlist</NavLink>
                       </li>
+                      <li className="nav-item ">
+                            <NavLink className="nav-link bg-dark text-white" activeStyle={{borderBottom:"3px solid  rgb(18, 72, 99)"}} to="/Admin-WishList">Dashboard</NavLink>
+                      </li>
+                      
                   </ul>
                
             

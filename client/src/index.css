@@ -8,4 +8,9 @@ body {
 }
 .row{
   min-height: 1px;
+  margin:0;
+  width: 100%;
+  
 }
+
+
