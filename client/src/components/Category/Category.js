@@ -70,7 +70,7 @@ export default class Category extends Component {
         textAlign: "center",
         color: "whitesmoke",
         
-        boxShadow:"0 0 0.3rem grey"
+        boxShadow:"0 0rem 0.1rem rgba(48,63,63,0.3)"
       }
       
       render(){
