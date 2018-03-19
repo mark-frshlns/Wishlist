@@ -39,7 +39,7 @@ module.exports = {
             let id = req.params.id;
             let data = req.body;
             db.Item.update(data,{where:{id:id}}).then(function(item){
-                
+                console.log(item);
                 db.Item.findOne({where:{id:id}}).then(result=>{
                   res.status(200).json(result);
                 })

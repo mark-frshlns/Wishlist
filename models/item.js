@@ -14,6 +14,11 @@ module.exports = function(sequelize, DataTypes){
         totalRequested: function(){
           return this.item_price * this.item_requested;
         }
+      },
+      hooks:{
+        beforeUpdate: (item, options)=>{
+          console.log(item);
+        }
       }
     });
 

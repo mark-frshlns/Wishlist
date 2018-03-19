@@ -64,29 +64,35 @@ export default class Category extends Component {
                           icon: "fa fa-angle-down"});
         }
       }
-      styles = {
-        background: "url('/assets/Images/pattern_5_thumb.png') fixed center",
-        zIndex: 99,
-        textAlign: "center",
-        color: "whitesmoke",
+      styles = function() {
+        if(this.state.open){
+            return ({background: "rgba(48,63,63,0.3)",
+            zIndex: 99,
+            textAlign: "center",
+            color: "whitesmoke",
+            boxShadow:"0 0rem 0.1rem rgba(48,63,63,0.3)"})
+        }
+        else{
+          return ({background: "rgb(245,245,245,0.7)"})
+        }
         
-        boxShadow:"0 0rem 0.1rem rgba(48,63,63,0.3)"
       }
       
       render(){
         return (
           <div>
               <div className="row categoryHeader">
-                <div className="col-md-1 col-sm-1" />
-                <div className="col-md-10 col-sm-10 mainCategory"  id={this.state.name} style={this.styles}>
-                    <span className="layer" style={{zIndex:-99}} /> 
+                
+                <div className="col-md-12 col-sm-12 mainCategory"  id={this.state.name} style={this.styles()}>
+                    <span className="layer bg-light" style={{zIndex:-99,}} /> 
                     <a className="btn bg-dark clicks" type="button" name={this.state.name}   onClick={this.handleClick} style={{float:"left",
                                   fontWeight:"900",
                                   margin:"0.5%",
                                   display:"inline-block",
                                   lineHeight:"15px",
                                   verticalAlign:"middle",
-                                  zIndex:"1100"
+                                  zIndex:"1100",
+                                  
                                   }}><i className={this.state.icon} /></a>
                     <span style={{display:"inline-block",margin:"0.5%",fontWeight:"900",fontSize:"20px"}}>{this.state.name}</span>
                 </div>
