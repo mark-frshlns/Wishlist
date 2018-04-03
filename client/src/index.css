@@ -3,11 +3,12 @@
 body {
   font-family: 'Philosopher' , sans-serif;
   margin: 0;
-  padding: 0;
-  
+  padding: 1%;
+  padding-top: 0;
+  background: url('/assets/Images/crossword.png') center fixed;
 }
 .row{
-  min-height: 1px;
+  min-height: 0.05px;
   margin:0;
   width: 100%;
   

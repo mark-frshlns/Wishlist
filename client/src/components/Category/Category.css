@@ -3,7 +3,12 @@
 }
 .mainCategory{
   z-index:99;
-  color:dimgrey;
-  text-align: center;
-  box-shadow:0 0rem 0.1rem rgba(48,63,63,0.3);
+  font-weight:550;
+  font-size:1.1rem;
+  /* box-shadow:0 0rem 0.1rem rgba(48,63,63,0.3); */
+}
+.mainCategory:hover{
+  cursor: pointer;
+  box-shadow: 0rem 0rem 0.3rem rgba(48,63,63,0.5);
+  
 }

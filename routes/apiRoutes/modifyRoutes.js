@@ -1,3 +1,4 @@
+
 const router = require("express").Router();
 
 const wishlist_controller = require('../../controllers/wishlist/wishlist_controller');
@@ -12,6 +13,6 @@ router.route("/deleteitem/:id")
       .put(wishlist_controller.deleteItem);
 
 router.route("/updateitem/:id")
-      .put(wishlist_controller.updateItem);
+      .put(wishlist_controller.updateItemRequest);
 
 module.exports = router;

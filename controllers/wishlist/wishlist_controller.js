@@ -35,16 +35,31 @@ module.exports = {
   findByCategoryId: function(req, res){
 
   },
-  updateItem: function(req, res){
+  updateItemRequest: function(req, res){
             let id = req.params.id;
-            let data = req.body;
-            db.Item.update(data,{where:{id:id}}).then(function(item){
-                console.log(item);
-                db.Item.findOne({where:{id:id}}).then(result=>{
-                  res.status(200).json(result);
-                })
-            }).catch(function(err){
-
+            let data = req.body.item_contributed;
+            console.log(data);
+            db.Item.findOne({where:{id:id}}).then(item=>{
+              console.log(item);
+                if(data > item.dataValues.item_requsted){
+                  res.status(301).json({msg:"greater than inventory"});
+                }else{
+                  db.Item.update({item_requested:item.item_requested-data,
+                                  item_contributed:item.item_contributed+data},{
+                                    where:{id:id},returning:true
+                                  })
+                  .then((updatedItem)=>{
+                    console.log(updatedItem);
+                      res.status(200).json(updatedItem);
+                  })
+                  .catch(err=>{
+                    console.log(err);
+                    res.status(500);
+                  })
+                }
+            }).catch(err=>{
+              console.log(err);
+              res.status(500);
             })
   },
   deleteItem: function(req, res){

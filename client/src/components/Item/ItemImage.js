@@ -4,7 +4,7 @@ const ItemImage = (props)=>{
 
         return (
           <div className={props.col}>
-                <span className="title"  />
+                <span />
                 <img className="item-image" src={props.item.item_imageUrl} alt={props.item.item_name} />
           </div>
         )

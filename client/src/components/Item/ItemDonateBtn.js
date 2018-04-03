@@ -6,10 +6,10 @@ const ItemDonateBtn = (props)=>{
       return (
         <div className={props.col}>
               
-        <span className="title text-muted"><i>Donate</i></span>
-        <hr />
+        <span className="title text-muted">Donate</span>
         
-        <button className="btn btn-block bg-dark text-white" type="submit" onClick={()=>{props.Item_Submit(props.item.id)}}>DONATE <i className="fa fa-thank-you"/></button>
+        
+        <button className="btn btn-block bg-info text-white" type="submit" onClick={()=>{props.Item_Submit(props.item.id)}}>DONATE <i className="fa fa-thank-you"/></button>
        </div>
       )
 

@@ -11,7 +11,7 @@ const Item = (props)=>{
   if(props.visible) {componentClasses.push('show')}
   return(
     <div>
-      <div className={`row ${componentClasses.join(" ")}`} style={props.last ? {marginBottom:".5rem"} : {}}>
+      <div className={`row ${componentClasses.join(" ")}`} style={props.last ? {marginBottom:".5rem",borderBottom:"none"} : {}}>
                   
                   <ItemImage  item={props.item} col={`col-sm-2 col-md-2 item-box`} />
                   <ItemDetail  item={props.item} col={`col-sm-2 col-md-2 item-box`} />

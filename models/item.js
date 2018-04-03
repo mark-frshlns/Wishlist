@@ -1,26 +1,21 @@
 module.exports = function(sequelize, DataTypes){
     let Item = sequelize.define('Item', {
-
         item_name: DataTypes.STRING,
-        item_price: DataTypes.INTEGER,
+        item_price: DataTypes.DOUBLE,
         item_requested: DataTypes.INTEGER,
-        item_contributed: DataTypes.INTEGER,
+        item_description: DataTypes.TEXT,
         item_imageUrl: DataTypes.STRING
-    }, {
+    },{
+      
       getterMethods:{
-        totalContributions: function(){
-          return this.item_price * this.item_contributed;
-        },
         totalRequested: function(){
           return this.item_price * this.item_requested;
         }
       },
-      hooks:{
-        beforeUpdate: (item, options)=>{
-          console.log(item);
-        }
-      }
-    });
+      
+    },
+      
+    );
 
     Item.associate = function(models){
       Item.belongsTo(models.Category);

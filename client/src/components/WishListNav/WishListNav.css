@@ -13,8 +13,10 @@
 .navbar>.nav>.nav-item{
   padding:1px;
 }
-.nav-tabs .nav-link{
+.mr-auto .nav-link{
   border:none;
+  
+  font-size: 15px;
   /* color:whitesmoke; */
 }
 .navbar>.layer{
