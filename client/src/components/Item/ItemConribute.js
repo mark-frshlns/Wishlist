@@ -5,9 +5,9 @@ const ItemContribute = (props)=>{
       return(
         <div className={props.col}>
             
-              <span className="title text-muted">Donated</span>
+              <span className="title text-muted">Price</span>
               
-              <h5>{props.item.item_contributed}</h5>
+              <h5 style={{fontWeight:600, color:"#e90000"}}>{`$${props.item.item_price}`}</h5>
             
         </div>
       )

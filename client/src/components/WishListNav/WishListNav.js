@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import './WishListNav.css';
 import { NavLink} from 'react-router-dom';
 
+
 export default class WishListNav extends Component {
       
       state={
@@ -21,16 +22,17 @@ export default class WishListNav extends Component {
                   <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav nav-pills nav-fill">
                               <li className="nav-item">
-                                    <NavLink className="nav-link bg-secondary text-white" activeStyle={{borderBottom:"2px solid  #3195b1"}} to="/Home">Home</NavLink>
+                                    <NavLink className="nav-link " style={{color:"white"}}  activeStyle={{backgroundColor:"#B99664",color:"rgba(50,50,50,0.6)"}} to="/Home">Home</NavLink>
                                </li>
                               <li className="nav-item">
-                                    <NavLink className="nav-link bg-secondary text-white" activeStyle={{borderBottom:"2px solid  #3195b1"}} to="/WishList">New Church Wishlist</NavLink>
+                                    <NavLink className="nav-link " style={{color:"white"}} activeStyle={{backgroundColor:"#B99664",color:"rgba(50,50,50,0.6)"}} to="/WishList">New Church Wishlist</NavLink>
                               </li>
                         <li className="nav-item ">
-                              <NavLink className="nav-link bg-secondary text-white" activeStyle={{borderBottom:"2px solid  #3195b1"}} to="/Admin-WishList">Dashboard</NavLink>
+                              <NavLink className="nav-link " style={{color:"white"}} activeStyle={{backgroundColor:"#B99664",color:"rgba(50,50,50,0.6)"}} to="/Admin-WishList">Dashboard</NavLink>
                         </li>
                         
                         </ul>
+                        
                   </div>
             
              </nav>

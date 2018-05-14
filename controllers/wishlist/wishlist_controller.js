@@ -36,6 +36,15 @@ module.exports = {
 
   },
   updateItemRequest: function(req, res){
+      let id = req.params.id;
+      let data = req.body.item_requested;
+      db.Item.update({item_requested:data},{where:{id:id}}).then(result=>{
+              res.status(200).json({msg:"updated"})
+      }).catch(err=>{
+
+      })
+  },
+  updateItemContribute: function(req, res){
             let id = req.params.id;
             let data = req.body.item_contributed;
             console.log(data);
@@ -45,7 +54,7 @@ module.exports = {
                   res.status(301).json({msg:"greater than inventory"});
                 }else{
                   db.Item.update({item_requested:item.item_requested-data,
-                                  item_contributed:item.item_contributed+data},{
+                                  },{
                                     where:{id:id},returning:true
                                   })
                   .then((updatedItem)=>{

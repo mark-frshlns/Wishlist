@@ -6,7 +6,7 @@
   
   margin-bottom: 2%;
   box-shadow:0 0rem 0.1rem rgba(48,63,63,0.3);
-  background-image: url("/assets/Images/pattern_5_thumb.png");
+  /* background-image: url("/assets/Images/pattern_5_thumb.png"); */
   z-index:99;
   
 }
@@ -20,5 +20,5 @@
   /* color:whitesmoke; */
 }
 .navbar>.layer{
-  background:rgba(145, 192, 192, 0.6);
+  background:#725637;
 }

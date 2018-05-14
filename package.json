@@ -5,11 +5,12 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "concurrently \"node server.js\" \"node scripts/start.js\""
   },
   "author": "Mark Soliman",
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^3.5.1",
     "morgan": "^1.9.0"
   },
   "dependencies": {

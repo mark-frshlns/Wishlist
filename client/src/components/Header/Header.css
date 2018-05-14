@@ -1,13 +1,17 @@
 .header{
   
-  background-image: url("/assets/Images/pattern_5_thumb.png");
+  
   position: relative;
   margin-bottom: 0px;
-  box-shadow:0 0rem 0.1rem rgba(48,63,63,0.3);
-  border:1px solid rgba(48,63,63,0.5);
+  box-shadow:0.03rem 0.04rem 0.1rem rgba(48,63,63,0.3);
+  
   border-bottom:none;
   border-radius: 0;
   z-index:99;
+  padding:0;
+}
+.header img{
+  width:100%;
 }
 .layer{
   
@@ -17,8 +21,8 @@
   left:0;
   top:0;
   z-index:-50;
-  background: rgb(18, 72, 99);
-  opacity:0.7;
+  background: #725637;
+  /* opacity:0.7; */
 }
 
 .header>div>a>img{

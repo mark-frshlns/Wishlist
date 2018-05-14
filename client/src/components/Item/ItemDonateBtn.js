@@ -2,14 +2,18 @@ import React from 'react';
 
 
 const ItemDonateBtn = (props)=>{
-      const max = props.item.item_requested - props.item.item_contributed;
+      // const max = props.item.item_requested - props.item.item_contributed;
       return (
         <div className={props.col}>
               
-        <span className="title text-muted">Donate</span>
+            <span className="title text-white" style={{opacity:0.2}}>Donate</span>
         
         
-        <button className="btn btn-block bg-info text-white" type="submit" onClick={()=>{props.Item_Submit(props.item.id)}}>DONATE <i className="fa fa-thank-you"/></button>
+             <button className="btn btn-block" style={{background:"#B99664",color:"rgba(50,50,50,0.6)"}} type="submit" 
+              onClick={()=>{props.Item_Submit({item_name:props.item.item_name,
+                                                item_id:props.item.id,
+                                                item_purchase_amount:props.quantity,
+                                                total_amount:props.quantity * props.item.item_price})}} disabled={props.invalidValue}>Add to Basket <i className="fa fa-thank-you"/></button>
        </div>
       )
 

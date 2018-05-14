@@ -7,7 +7,7 @@ const ItemDetail = (props)=>{
               
                 <span className="title text-muted">{props.item.item_name.toUpperCase()}</span>
                 
-                <h4 style={{fontWeight:600, color:"#e90000"}} >{`$${props.item.item_price}`}</h4>
+                <p className="text-dark">{`${props.item.item_description}`}</p>
               
           </div>
         )
