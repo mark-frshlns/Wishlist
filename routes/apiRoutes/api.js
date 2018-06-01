@@ -3,10 +3,10 @@ const findAllRoutes = require('./findAllRoutes');
 const modifyRoutes = require('./modifyRoutes');
 const userRoutes = require('./userRoutes');
 const authRoutes = require('./authRoutes');
-
+const checkout = require('./checkoutRoute');
 router.use("/all", findAllRoutes);
 router.use("/modify", modifyRoutes);
 router.use("/user", userRoutes);
 router.use("/auth", authRoutes);
-
+router.use("/Btree", checkout);
 module.exports = router;

@@ -7,6 +7,7 @@ body {
   padding: 1%;
   padding-top: 0;
   background: url('/assets/Images/crossword.png') center fixed;
+  color:#484848;
 }
 .row{
   min-height: 0.05px;

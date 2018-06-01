@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes){
          type: DataTypes.INTEGER,
          defaultValue: 0
         },
+        percent_fulfilled:DataTypes.DOUBLE,
         item_description: DataTypes.TEXT,
         item_imageUrl: DataTypes.STRING
     },{

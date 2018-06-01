@@ -27,7 +27,10 @@ export default class Wishlist extends Component {
       let temp = [];
       
       temp = this.state.basket;
-      temp.push(Obj);
+      if(Obj.item_purchase_amount > 0){
+        temp.push(Obj);
+      }
+      
       let total = this.getBasketTotal(temp);
       this.setState({basket:temp,total:total});
     }
@@ -48,7 +51,7 @@ export default class Wishlist extends Component {
       
       let basket = document.getElementById("church_basket");
       let basketIcon = document.getElementById('basketIcon');
-      console.log(basket);
+      
       basket.addEventListener('mouseout' , function(){
         basketIcon.className = "fa fa-box";
       })
@@ -60,8 +63,8 @@ export default class Wishlist extends Component {
       return(
         
             <div className="row">
-            <Basket Basket={this.state.basket} remove={this.removeFromBasket.bind(this)} total={this.state.total} />
-            
+              <Basket Basket={this.state.basket} data={this.state.data} remove={this.removeFromBasket.bind(this)} total={this.state.total} />
+           
             {this.state.data.length > 0 ? (
                 this.state.data.map((cat,i)=>{
                   return (<Category category={cat} key={i} indicator={i} handleAddToBasket={this.addToBasket.bind(this)} remove={this.removeFromBasket.bind(this)} total={this.state.total} />);
@@ -71,6 +74,7 @@ export default class Wishlist extends Component {
             (
               null
             )}
+           
             </div>
       )
     }

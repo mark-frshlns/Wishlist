@@ -70,7 +70,13 @@ input[type=number] {
 
 .quantity>button{
   width:25%;
-  box-shadow:0 0rem 0.1rem rgba(48,63,63,0.3);
+  /* box-shadow:0 0rem 0.05rem #725637; */
+  color:#725637;
+  background: transparent;
+  border: 0.05rem solid #725637;
+}
+.quantity>button:hover{
+  background: #72563760;
 }
 
 .bg-dark:hover{

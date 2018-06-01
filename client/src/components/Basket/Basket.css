@@ -2,16 +2,12 @@
   opacity: 0;
   display: none;
   position: absolute;
- 
   box-shadow:0rem 0.2rem 1rem #725637;
   text-align: left;
   right:0;
   background: #B99664;
-  padding:0.3rem 5rem;
-  
   border:0.1rem solid #B99664;
   z-index:1000;
-  transition: display 0.5s ease-in-out;
 }
 .basket{
   position: fixed;
@@ -32,15 +28,12 @@
   box-shadow: 0rem 0.2rem 3rem #484848;
   background: rgba(124, 62, 4, 0.392);
 }
-.basketCart ul{
-  position: relative;
-  top:0;
-  display:flex;
-  text-align: left;
-}
+
 .basketCart li{
   position: relative;
- display: inline;
+ display: flex;
+ flex-direction: row;
+ justify-content: center;
   padding:0.8rem;
   background:rgba(237, 231, 231, 0.392);
   margin-bottom: 10px;
@@ -52,20 +45,25 @@
 }
 
 .basketCart li .btn{
-  display: inline;
-  float:right;
-  line-height:10px;
+  
+ width: auto;
   background: transparent;
   color:#725637;
   vertical-align: middle;
-  font-size: 21px;
-  border:0.05rem solid #725637;
+  font-size: 16px;
+  line-height: 20px;
   padding:0.6rem;
   
 }
+.basketCart li .btn:first-child{
+  background: #00a4e2;
+  color:white;
+}
 .card-body{
-  flex:1 0 auto;
-  padding:0.8rem;
+  flex:0 0 auto;
+  padding:0.3rem;
+  margin: auto;
+  width: 95%;
 }
 .basketCart li .btn:hover{
   background: #ee304875;
@@ -83,16 +81,22 @@
   
   text-align: left;
 }
+
+
 .innerBasket h6, 
 .innerBasket button{
-  display: inline;
+  display: flex;
+  flex-direction: row;
   padding:0.6rem;
+  
   line-height: 1.2;
   text-align: left;
 }
 .basket li:hover .basketCart{
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
   opacity: 1;
 }
 @media only screen and (max-width:550px){

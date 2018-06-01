@@ -1,5 +1,5 @@
 const db = require('../../models');
-
+const gateway = require('../../Btree/config');
 module.exports = {
 
   findAllItems: function(req, res){
@@ -85,6 +85,11 @@ module.exports = {
         db.Item.create(data).then(function(result){
            res.status(200).json(result);
         })
+  },
+  checkout: function(req, res){
+
+        
+
   }
 
 }
