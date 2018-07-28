@@ -8,5 +8,5 @@ router.use("/all", findAllRoutes);
 router.use("/modify", modifyRoutes);
 router.use("/user", userRoutes);
 router.use("/auth", authRoutes);
-router.use("/Btree", checkout);
+
 module.exports = router;

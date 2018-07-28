@@ -1,5 +1,20 @@
 const db = require('../../models');
-const gateway = require('../../Btree/config');
+const sequelize = require('sequelize');
+
+function verifyInventory(items,cb){
+   let result;
+    db.Item.findAll({where:{id:items}}).then((dataSet)=>{
+      console.log(dataSet[0].dataValues.payment_Percentage);
+            result = dataSet.every(row=>{
+              console.log(row);
+               return row.dataValues.payment_Percentage <= 100;
+            })
+            console.log(result);
+            cb(result);
+     }).catch(err=>{})
+
+  
+}
 module.exports = {
 
   findAllItems: function(req, res){
@@ -72,7 +87,11 @@ module.exports = {
             })
   },
   deleteItem: function(req, res){
-
+        db.Item.destroy({where:{id:req.params.id}}).then(num=>{
+              res.status(200).json({msg:"deleted",data:num});
+        }).catch(err=>{
+              res.status(304).json({msg:"can not delete", data:err});
+        })
   },
   addCategory: function(req, res){
       let data = req.body;
@@ -86,10 +105,5 @@ module.exports = {
            res.status(200).json(result);
         })
   },
-  checkout: function(req, res){
-
-        
-
-  }
 
 }

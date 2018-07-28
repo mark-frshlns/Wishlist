@@ -1,13 +1,29 @@
 import React, {Component} from 'react';
-import {default as API} from '../../util/USERAPI';
+import {default as API} from '../../util/API';
 import {default as DashboardLogin} from '../../components/DashboardLogin';
-
+import DashBoardMenu from '../../components/DashBoardMenu';
+import './DashBoard.css';
+import {Header} from '../../components/Header';
+import {default as WishListNav} from '../../components/WishListNav';
+import {default as Footer} from '../../components/Footer';
+import DashBoardSummary from '../../components/DashBoardSummary/DashBoardSummary';
 export default class DashBoard extends Component {
   state = {
       auth:false,
       Token:"",
       email:"",
-      password:""
+      password:"",
+      data:[],
+      category_name:"",
+      item_obj:{},
+      dashBoardComp: "summary"
+  }
+  componentDidMount (){
+      API.getAll().then(res=>{
+          this.setState({data:res.data});
+      }).catch(err=>{
+
+      })
   }
   login = (event)=>{
     event.preventDefault();
@@ -27,19 +43,59 @@ export default class DashBoard extends Component {
       [target]:input
     })
   }
+  categoryAdd = ()=>{
+    API.addCategory({category_name:this.state.category_name})
+      .then(res=>{
+
+      })
+      .catch(err=>{
+
+      })
+  }
+  itemAdd = ()=>{
+    API.addItem(this.state.item_obj).then(res=>{
+
+    }).catch(err=>{
+      
+    })
+  }
+  deleteItem = (e)=>{
+    let id = e.target.id;
+    API.deleteItem(id).then(res=>{
+        
+        API.getAll().then(res=>{
+          this.setState({data:res.data});
+      }).catch(err=>{
+
+      })
+    })
+  }
+  currentComponent = ()=>{
+
+    // switch (this.state.dashBoardComp){
+    //   case "summary": return <DashBoardSummary />
+    //   case "addItem": return <ItemForm />
+    //   case "addCategory": return <CategoryForm />
+    //   default: return <DashBoardSummary />
+    // }
+
+  }
   render(){
     return (
       <div className="container-fluid">
-        
-        {this.state.auth ? <div />:
+        <Header />
+        <WishListNav />
+        {this.state.auth ? <DashboardLogin />:
           (
           <div className="row">
-              <div className="col-md-3 col-sm-0"/>
-              <DashboardLogin handleInputChange={this.handleInputChange} handleLogin={this.login} />
+              <DashBoardMenu />
+              <div className="main col-md-10">
+                    <DashBoardSummary data={this.state.data} Delete={this.deleteItem}/>
+              </div>
           </div>
           )
         }
-        
+      <Footer />
       </div>
     )
   }

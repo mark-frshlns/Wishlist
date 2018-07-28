@@ -1,0 +1,37 @@
+.main-menu{
+  padding: 0px;
+  box-shadow:0 0rem 0.1rem rgba(48,63,63,0.3);
+  background: #725637;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+.menu-items{
+  list-style-type: none;
+  margin: auto;
+  padding: 0;
+  width: 100%;
+}
+.action{
+  margin:5px;
+  
+  padding: 0px;
+}
+.action:not(:last-child){
+  border-bottom:1px solid #B99664;
+}
+.action:hover{
+  background: #B99664;
+}
+.action .btn{
+  padding: 16px;
+  background: transparent;
+  color:whitesmoke;
+}
+.Toggles{
+  display: none;
+}
+@media screen and (max-width:755px){
+
+}

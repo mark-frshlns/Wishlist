@@ -3,11 +3,18 @@ module.exports = function(sequelize, DataTypes){
         item_name: DataTypes.STRING,
         item_price: DataTypes.DOUBLE,
         item_requested: DataTypes.INTEGER,
-        item_fulfilled:{
-         type: DataTypes.INTEGER,
-         defaultValue: 0
+        totalRequested:{
+          type:DataTypes.DOUBLE,
+          defaultValue:0
         },
-        percent_fulfilled:DataTypes.DOUBLE,
+        totalFulfilled: {
+          type:DataTypes.DOUBLE,
+          defaultValue:0
+        },
+        payment_Percentage:{
+          type:DataTypes.DOUBLE,
+          defaultValue:0
+        },
         item_description: DataTypes.TEXT,
         item_imageUrl: DataTypes.STRING
     },{
@@ -16,10 +23,15 @@ module.exports = function(sequelize, DataTypes){
         totalRequested: function(){
           return this.item_price * this.item_requested;
         },
-        totalFulfilled: function(){
-          return this.item_price * this.item_fulfilled;
+        payment_Percentage: function(){
+          return (this.totalFulfilled / this.totalRequested);
         }
       },
+      setterMethods:{
+        totalRequested: function(){
+          this.totalRequested = this.item_price * this.item_requested;
+        }
+      }
       
     },
       

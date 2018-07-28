@@ -12,8 +12,9 @@ const ItemDonateBtn = (props)=>{
              <button className="btn btn-block" style={{background:"#B99664",color:"rgba(50,50,50,0.6)"}} type="submit" 
               onClick={()=>{props.Item_Submit({item_name:props.item.item_name,
                                                 item_id:props.item.id,
-                                                item_purchase_amount:props.quantity,
-                                                total_amount:props.quantity * props.item.item_price})}} disabled={props.invalidValue}>Add to Basket <i className="fa fa-thank-you"/></button>
+                                                quantity:props.quantity,
+                                                total_amount:props.quantity * props.item.item_price
+                                          })}} disabled={props.invalidValue}>Add to Basket <i className="fa fa-thumbs-up"/></button>
        </div>
       )
 

@@ -17,8 +17,25 @@
   min-height:150px;
   
 }
-.item-box h4,.item-box>.btn,.item-box h5,.item-box p{
+.progress{
+  width: 100%;
+  margin-top: 5px;
+  background: #ffffff;
+  border:0.5px solid #725637;
+  height:20px;
+  font-size: 14px;
+  
+}
+.progress-bar{
+  color:#725637;
+  background: orangered;
+  opacity: 0.7;
+}
+.item-box h4,.item-box>.btn,.item-box h5,.item-box p {
   margin-top: 20px;
+}
+.summaryTarget:nth-child(even){
+  margin-top: 14px;
 }
 .partial{
   float: left;
@@ -26,6 +43,7 @@
 }
 .partial h5{
   text-align: center;
+  margin-top:0;
 }
 .redFlag{
   border-color:red;
@@ -67,7 +85,14 @@ input[type=number] {
   margin-top:1rem;
   margin-bottom:1rem;
 }
+.summaryTarget{
+  flex-direction: row;
+  justify-content: center;
 
+}
+.item-box-content{
+  justify-content: center;
+}
 .quantity>button{
   width:25%;
   /* box-shadow:0 0rem 0.05rem #725637; */

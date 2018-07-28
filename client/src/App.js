@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import {Header} from './components/Header';
-import {default as WishListNav} from './components/WishListNav';
+
 import {WishList, DashBoard, Home} from './pages';
+
 
 class App extends Component {
   render() {
@@ -13,11 +13,11 @@ class App extends Component {
         <Router>
         
           <Switch>
-              <Route exact path="/Home" render={()=><div className="container-fluid" ><Header /><WishListNav /><Home/></div>} />
+              <Route exact path="/" component={Home} />
              
-              <Route exact path="/WishList" render={()=><div className="container-fluid" ><Header /><WishListNav /><WishList /></div>} />
+              <Route exact path="/WishList" component={WishList} />
               
-              <Route exact path="/Admin-WishList" render={()=><div className="container-fluid" ><Header /><WishListNav /><DashBoard/></div>} />
+              <Route exact path="/Admin-WishList" component={DashBoard}/>
               
           </Switch>
         </Router>

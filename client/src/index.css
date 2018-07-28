@@ -4,10 +4,11 @@
 body {
   font-family: 'lato' , sans-serif;
   margin: 0;
-  padding: 1%;
+  
   padding-top: 0;
   background: url('/assets/Images/crossword.png') center fixed;
   color:#484848;
+ 
 }
 .row{
   min-height: 0.05px;
@@ -15,5 +16,6 @@ body {
   width: 100%;
   
 }
-
-
+.col{
+  padding:0!important;
+}

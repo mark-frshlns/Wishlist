@@ -7,7 +7,7 @@ const ItemContribute = (props)=>{
             
               <span className="title text-muted">Price</span>
               
-              <h5 style={{fontWeight:600, color:"#e90000"}}>{`$${props.item.item_price}`}</h5>
+              <h5 style={{fontWeight:600, color:"#bb8045"}}>{`$${props.item.item_price}`}</h5>
             
         </div>
       )

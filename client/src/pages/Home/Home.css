@@ -1,0 +1,83 @@
+.imgContainer{
+  background: url("/assets/Images/st-antn-church.png");
+  background-position: auto center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 420px;
+}
+.QouteContainer{
+  text-align: center;
+ 
+  padding: 12px;
+  font-family: 'philosopher' , sans-serif;
+  color:#593f39;
+}
+.card-title{
+  font-family: 'philosopher' , sans-serif;
+}
+.card{
+  padding: 0;
+  background-color: #B99664;
+  color:white;
+}
+.card-img-overlay i h2{
+  text-align: center;
+  flex-direction: row;
+  padding: 12px;
+  font-family: 'philosopher' , sans-serif;
+}
+.overlayContent{
+  position: absolute;
+  right:10px;
+  bottom:10px;
+}
+.card-img-overlay a{
+  padding:16px;
+  text-align: center;
+  border-radius: 125px;
+  color:white;
+  box-shadow: 0em 0em 0.01em #e9ecef;
+  background: #593f39;
+ 
+}
+.card-img-overlay a:hover{
+    background: #a6ceee;
+}
+.card-body{
+  padding:1.75rem;
+  
+  
+}
+.text-boxes{
+  flex-direction: row;
+}
+.tooltip{
+  background: #a6ceee;
+  width: 100px;
+  height: 40px;
+  
+}
+.expandable{
+  margin: 2%;
+  padding:23px;
+  border:1px solid rgba(0,0,0,.125);
+  border-radius:0.25rem;
+  
+  overflow: hidden;
+  box-shadow: 0 0 0.3px #484848;
+  transition-property: height;
+  transition-duration: 1s;
+  transition-delay: 0;
+  transition-timing-function: linear;
+  
+}
+.specialMsg:hover{
+  border:1px solid #593f39;
+  cursor: pointer;
+}
+.textContainer{
+  padding: 0;
+}
+.textContainer p{
+  line-height: 2.3;
+}
