@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   Category.associate = function(models){
-    Category.hasMany(models.Item)
+    Category.hasMany(models.Item,{onDelete:'CASCADE'})
   }
   return Category;
 }

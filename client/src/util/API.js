@@ -11,9 +11,15 @@ export default {
     return axios.post('api/modify/addcategory', catName);
   },
   addItem: function(itemObj){
-    return axios.post('api/modify/additem', itemObj);
+ 
+      return axios.post('api/modify/additem', itemObj);
+   
+    
   },
   deleteItem: function(id){
     return axios.put(`api/modify//deleteitem/${id}`);
+  },
+  deleteCategory: function(id){
+    return axios.put(`api/modify/deletecategory/${id}`);
   }
 }

@@ -1,5 +1,6 @@
 const db = require('../../models');
 const sequelize = require('sequelize');
+const fs = require('fs');
 
 function verifyInventory(items,cb){
    let result;
@@ -99,11 +100,27 @@ module.exports = {
         res.status(200).json(result);
       })
   },
-  addItem: function(req, res){
-        let data = req.body;
-        db.Item.create(data).then(function(result){
-           res.status(200).json(result);
-        })
+  addItem: function(req, res, next){
+      console.log(req.file);
+        db.Item.create({
+                          item_name:req.body.item_name,
+                          item_description:req.body.item_description,
+                          item_price:req.body.item_price,
+                          item_requested:req.body.item_requested,
+                          CategoryId:req.body.CategoryId,
+                          item_imageUrl:req.file.path || req.body.item_imageUrl  
+                        }).then(function(result){
+                                   res.status(200).json(result);
+                      }).catch(err=>{
+                        console.log(err);
+                      })
   },
+  deleteCategory: function(req, res){
+    db.Category.destroy({where:{id:req.params.id}}).then(function(result){
+      res.status(200).json(result);
+    }).catch(err=>{
+      res.status(304).json({msg:"Not Deleted",err:err});
+    })
+  }
 
 }

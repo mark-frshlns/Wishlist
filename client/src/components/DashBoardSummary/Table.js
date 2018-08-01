@@ -5,8 +5,9 @@ const Table = (props)=>{
         return (
           <table className="table table-striped table-bordered table-dark">
           <thead>
-              <tr className="table-title bg-primary">
-                  <th className=" text-center ">{props.cat.toUpperCase()}</th>
+              <tr className="table-title bg-info">
+                  <th className=" text-center ">{props.cat.toUpperCase()}<button className="btn btn-warning btn-block text-muted"  onClick={props.Delete}  name="category" type="submit" id={props.catId}>DELETE</button></th>
+                  
               </tr>
               <tr>
                   <th scope="col">#ID</th>

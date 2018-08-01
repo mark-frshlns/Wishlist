@@ -7,6 +7,8 @@ import {Header} from '../../components/Header';
 import {default as WishListNav} from '../../components/WishListNav';
 import {default as Footer} from '../../components/Footer';
 import DashBoardSummary from '../../components/DashBoardSummary/DashBoardSummary';
+import CategoryForm from '../../components/DashBoardComponents/CategoryForm';
+import ItemForm from '../../components/DashBoardComponents/ItemForm';
 export default class DashBoard extends Component {
   state = {
       auth:false,
@@ -14,9 +16,10 @@ export default class DashBoard extends Component {
       email:"",
       password:"",
       data:[],
+      alert:"",
       category_name:"",
       item_obj:{},
-      dashBoardComp: "summary"
+      dashBoardComp: ""
   }
   componentDidMount (){
       API.getAll().then(res=>{
@@ -36,6 +39,9 @@ export default class DashBoard extends Component {
         alert("User Not Found contact admin!")
     })
   }
+  setView = (e)=>{
+    this.setState({dashBoardComp:e.target.name});
+  }
   handleInputChange = (event)=>{
     let target = event.target.name;
     let input = event.target.value.trim();
@@ -43,15 +49,30 @@ export default class DashBoard extends Component {
       [target]:input
     })
   }
-  categoryAdd = ()=>{
-    API.addCategory({category_name:this.state.category_name})
+  categoryAdd = (event)=>{
+    event.preventDefault();
+    console.log("in function");
+    let categories = this.state.data.map(cat=>{return cat.category_name.toLowerCase()});
+    console.log(categories);
+    if(categories.indexOf(this.state.category_name.toLowerCase()) > -1){
+      this.setState({alert:"Category Already Exists"});
+    }else{
+      API.addCategory({category_name:this.state.category_name})
       .then(res=>{
+                API.getAll().then(res=>{
+                  this.setState({alert:"Successfully Created",data:res.data})
+              }).catch(err=>{
 
+              })
+          
       })
       .catch(err=>{
-
+          this.setState({alert:"Unable to Create"})
       })
+    }
+    
   }
+  
   itemAdd = ()=>{
     API.addItem(this.state.item_obj).then(res=>{
 
@@ -61,7 +82,18 @@ export default class DashBoard extends Component {
   }
   deleteItem = (e)=>{
     let id = e.target.id;
-    API.deleteItem(id).then(res=>{
+    console.log(e.target.name);
+    if(e.target.name === "category"){
+      API.deleteCategory(e.target.id).then(res=>{
+        API.getAll().then(res=>{
+          this.setState({data:res.data});
+      }).catch(err=>{
+
+      })
+      })
+    }
+    else{
+      API.deleteItem(id).then(res=>{
         
         API.getAll().then(res=>{
           this.setState({data:res.data});
@@ -69,15 +101,39 @@ export default class DashBoard extends Component {
 
       })
     })
+    }
+   
+  }
+  handleItemForm = (e)=>{
+          let dummy = this.state.item_obj;
+          dummy[e.target.name] = e.target.value;
+          this.setState({item_obj:dummy});
+  }
+  handleItemSubmit = (e)=>{
+    e.preventDefault();
+    console.log(this.state.item_obj);
+    
+    
+        let form = document.querySelector('form');
+        let data = new FormData(form);
+        
+        console.log(typeof data);
+        API.addItem(data).then(res=>{
+          console.log(res);
+      }).catch(err=>{
+        console.log(err);
+      })
+  
+   
   }
   currentComponent = ()=>{
 
-    // switch (this.state.dashBoardComp){
-    //   case "summary": return <DashBoardSummary />
-    //   case "addItem": return <ItemForm />
-    //   case "addCategory": return <CategoryForm />
-    //   default: return <DashBoardSummary />
-    // }
+    switch (this.state.dashBoardComp){
+      case "summary": return <DashBoardSummary data={this.state.data} Delete={this.deleteItem} />
+      case "addItem": return <ItemForm data={this.state.data} handleInputChange={this.handleItemForm} handleSubmit={this.handleItemSubmit}/>
+      case "addCategory": return <CategoryForm alert={this.state.alert} handleInputChange={this.handleInputChange} handleAdd={this.categoryAdd}/>
+      default: return <DashBoardSummary data={this.state.data} Delete={this.deleteItem} />
+    }
 
   }
   render(){
@@ -88,9 +144,9 @@ export default class DashBoard extends Component {
         {this.state.auth ? <DashboardLogin />:
           (
           <div className="row">
-              <DashBoardMenu />
+              <DashBoardMenu setView={this.setView} current={this.state.dashBoardComp}/>
               <div className="main col-md-10">
-                    <DashBoardSummary data={this.state.data} Delete={this.deleteItem}/>
+                   {this.currentComponent()}
               </div>
           </div>
           )

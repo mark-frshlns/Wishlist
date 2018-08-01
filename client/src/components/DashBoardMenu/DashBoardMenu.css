@@ -4,13 +4,12 @@
   background: #725637;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-
+  justify-content: flex-start;
+  
 }
 .menu-items{
   list-style-type: none;
-  margin: auto;
-  padding: 0;
+  padding:0;
   width: 100%;
 }
 .action{
@@ -18,20 +17,24 @@
   
   padding: 0px;
 }
-.action:not(:last-child){
-  border-bottom:1px solid #B99664;
-}
+
 .action:hover{
   background: #B99664;
 }
 .action .btn{
   padding: 16px;
   background: transparent;
-  color:whitesmoke;
+  color:white;
 }
-.Toggles{
-  display: none;
+.action.active .btn{
+  color:#725637;
 }
-@media screen and (max-width:755px){
-
+.active{
+  background: #B99664;
+  box-shadow:0 0 20px 2px rgba(0,0,0,0.1);
+  border:1px solid white;
+  
+}
+.action .btn:focus{
+  box-shadow: none;
 }
