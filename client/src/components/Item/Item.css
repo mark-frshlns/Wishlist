@@ -28,8 +28,9 @@
 }
 .progress-bar{
   color:#725637;
-  background: orangered;
+  background: #b99664;
   opacity: 0.7;
+  text-align: center;
 }
 .item-box h4,.item-box>.btn,.item-box h5,.item-box p {
   margin-top: 20px;
@@ -39,11 +40,27 @@
 }
 .partial{
   float: left;
-  width: 50%;
+  width: 35%;
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  padding:5px;
+  margin: auto;
+  
+  
+  color:#725637;
+  border: 1px solid #725637;
+  border-radius: 4px;
 }
+
 .partial h5{
   text-align: center;
-  margin-top:0;
+  margin: auto;
+  
+}
+.darker{
+  background: #72563785;
+  z-index:99;
 }
 .redFlag{
   border-color:red;
@@ -53,6 +70,12 @@
   color:rgba(44, 58, 58, 0.719);
   text-shadow: 0rem 0rem 0.2rem rgba(48,63,63,0.3);
  
+}
+.addtoBasket{
+  background:#b99664;
+}
+.addtoBasket:hover{
+  background:#72563760;
 }
 .item-image{
   width:85%;

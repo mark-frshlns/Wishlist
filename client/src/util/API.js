@@ -21,5 +21,8 @@ export default {
   },
   deleteCategory: function(id){
     return axios.put(`api/modify/deletecategory/${id}`);
+  },
+  updateRecord: function(data){
+    return axios.put('api/modify/update/',data);
   }
 }

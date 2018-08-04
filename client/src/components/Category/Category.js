@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import './Category.css'
 import Item from '../Item/Item';
+
 // import {default as API} from '../../util/API';
 export default class Category extends Component {
 
@@ -18,6 +19,7 @@ export default class Category extends Component {
         }
       }
       componentWillMount(){
+        
         if(this.state.location < 2){
           this.setState({
             open:true,
@@ -53,9 +55,11 @@ export default class Category extends Component {
             if(opr === "add"){
               if(input.value >= max){
                 input.value=max;
+                alert("max quantity reached !")
               }
               else if(input.value < 0){
                 input.value=0;
+                alert("min quantity reached !");
               }
               else{
                 input.value++;
@@ -64,8 +68,10 @@ export default class Category extends Component {
             else if(opr === "subt"){
               if(input.value-1 < 0){
                   input.value=0
+                  alert("min quantity reached !")
               }else if(input.value > max){
                 input.value=max;
+                alert("max quantity reached !")
               }
               else{
                 input.value--;

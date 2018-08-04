@@ -1,27 +1,36 @@
 {
   "name": "stanthony_wishlist",
-  "version": "0.0.1",
-  "description": "st anthony orthodox church wishlist app",
+  "version": "1.0.0",
+  "description": "St Anthony Coptic Orthodox Church Wishlist app",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"node server.js\" \"node scripts/start.js\""
+    "client": "node scripts/start.js",
+    "start": "concurrently \"node server.js\" \"npm run client\"",
+    "server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mark7389/Wishlist.git"
   },
   "author": "Mark Soliman",
   "license": "ISC",
-  "devDependencies": {
-    "concurrently": "^3.5.1",
-    "morgan": "^1.9.0"
+  "bugs": {
+    "url": "https://github.com/mark7389/Wishlist/issues"
   },
+  "homepage": "https://github.com/mark7389/Wishlist#readme",
   "dependencies": {
-    "bcrypt": "^1.0.3",
-    "bcryptjs": "^2.4.3",
-    "body-parser": "^1.18.2",
-    "express": "^4.16.2",
-    "jsonwebtoken": "^8.2.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
     "multer": "^1.3.1",
-    "mysql2": "^1.5.2",
+    "mysql2": "^1.6.0",
+    "passport": "^0.4.0",
     "path": "^0.12.7",
-    "sequelize": "^4.35.5"
+    "sequelize": "^4.38.0"
+  },
+  "devDependencies": {
+    "concurrently": "^3.6.1",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.18.3"
   }
 }

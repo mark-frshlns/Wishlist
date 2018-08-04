@@ -85,8 +85,7 @@
 
 .innerBasket h6, 
 .innerBasket button{
-  display: flex;
-  flex-direction: row;
+  
   padding:0.6rem;
   
   line-height: 1.2;

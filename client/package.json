@@ -8,6 +8,7 @@
     "jquery": "^3.3.1",
     "jspdf": "^1.4.1",
     "npm": "^6.2.0",
+    "paypal-checkout": "^4.0.209",
     "popper.js": "^1.14.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",

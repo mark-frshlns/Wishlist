@@ -1,6 +1,7 @@
-.item_form input[type=number]{
+.item_form input[type=number],.panel input[type=number]{
   margin:auto 0;
 }
+ 
 .formContainer{
   padding:16px;
   margin:5px auto;

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './Wishlist.css';
 import {default as API} from '../../util/API';
 import {default as Category} from '../../components/Category';
+import {default as Checkout} from '../../components/Checkout/Checkout';
 import Basket from '../../components/Basket/Basket';
 import {Header} from '../../components/Header';
 import {default as WishListNav} from '../../components/WishListNav';
@@ -13,14 +14,18 @@ export default class Wishlist extends Component {
       this.updateState = this.updateState.bind(this);
       this.removeFromBasket = this.removeFromBasket.bind(this);
       this.addToBasket = this.addToBasket.bind(this);
-      
+      this.checkOut = this.checkOut.bind(this);
+      this.handleInput = this.handleInput.bind(this);
     }
     state = {
       data: [],
       basket: [],
       message:null,
       success:false,
-      total:0
+      item:"",
+      
+      total:0,
+      checkout:false
     }
     componentDidMount(){
         this.hoverEffect();
@@ -30,12 +35,19 @@ export default class Wishlist extends Component {
             this.setState({
               data:res.data
             })
-            console.log(res.data);
+            
         }).catch(err=>{
-          console.log(err);
-        })
+                  })
     }
-  
+    checkOut (){
+      this.setState({checkout:true});
+    }
+    
+    handleInput (e){
+      const name = e.target.name;
+      const value = e.target.value;
+      this.setState({[name]:value});
+    }
     updateState (e){
       e.preventDefault();
       API.getAll().then(res=>{
@@ -43,14 +55,12 @@ export default class Wishlist extends Component {
         this.setState({
           data:res.data
         })
-        console.log(res.data);
+        
     }).catch(err=>{
-      console.log(err);
-    })
+          })
     }
     addToBasket(Obj){
-      console.log(Obj);
-      let temp = [];
+            let temp = [];
       
       temp = this.state.basket;
       if(Obj.quantity > 0){
@@ -61,12 +71,12 @@ export default class Wishlist extends Component {
       this.setState({basket:temp,total:total});
     }
     removeFromBasket(e){
-        console.log(e.target.id);
+        
         let temp = [];
         if(this.state.basket.length > 1){
-          temp = this.state.basket.filter((item, i)=>i !== parseInt(e.target.id));
+          temp = this.state.basket.filter((item, i)=>i !== parseInt(e.target.id,10));
         }
-        console.log(temp);
+        
         let total = this.getBasketTotal(temp);
         this.setState({basket:temp,total:total});
     }
@@ -91,22 +101,28 @@ export default class Wishlist extends Component {
     }
     render(){
       return(
-            <div className="container-fluid">
+            <div className="container-fluid ">
             <Header />
             <WishListNav />
-            <div className="row wishlist_body">
-              <Basket Basket={this.state.basket} data={this.state.data}  remove={this.removeFromBasket} total={this.state.total} setModalViewFalse={this.setModalViewFalse} setModalViewTrue={this.setModalViewTrue}/>
-              
-            {this.state.data.length > 0 ? (
-                this.state.data.map((cat,i)=>{
-                  return (<Category category={cat} key={i} indicator={i} handleAddToBasket={this.addToBasket} remove={this.removeFromBasket} total={this.state.total} />);
-                })
-            )
-            :
-            (
-              null
-            )}
-           
+            <div className="row  ">
+                  <div className="wishlist_body">
+                      {this.state.checkout ? (<Checkout basket={this.state.basket} total={this.state.total} remove={this.removeFromBasket} data={this.state.data} handleInput={this.handleInput} item={this.state.item}/>):(
+                        <div>
+                            <Basket Basket={this.state.basket} data={this.state.data}  remove={this.removeFromBasket} total={this.state.total} cout={this.checkOut}/>
+                        
+                              {this.state.data.length > 0 ? (
+                                  this.state.data.map((cat,i)=>{
+                                    return (<Category category={cat} key={i} indicator={i} handleAddToBasket={this.addToBasket} remove={this.removeFromBasket} total={this.state.total} />);
+                                  })
+                              )
+                              :
+                              (
+                                null
+                              )}
+                         </div>
+                      )}
+                  
+                </div>
             </div>
             <Footer />
             </div>

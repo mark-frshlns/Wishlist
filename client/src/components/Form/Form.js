@@ -9,50 +9,26 @@ const Form = (props)=>{
        <div className="panel-body">
              <div className="row">
                 <div className="form-group col-sm-12">
-                      <label htmlFor="cardNumber">Card Number:</label>
-                      <div className="form-control" id="cardNumber" />
+                      <label htmlFor="itemSelect">Choose Category/Item</label>
+                      <select className="form-control" name="item" onChange={props.handleInputChange} id="itemSelect" disabled={props.confirm ? true:false}>
+                            <option value="">Pick an item...</option>
+                            {props.data.map((cat,i)=>{
+                                  return <optgroup label={cat.category_name} key={i}>
+                                                {cat.Items.map((item,i)=>{
+                                                      return <option value={item.id} key={i}>{item.item_name}</option>
+                                                })}
+                                         </optgroup>
+                            })}
+                      </select>
+                      
+                  </div>
+                  <div className="form-group col-sm-12">
+                      <label htmlFor="getTotal">Donation Amount</label>
+                      <input type="number" className="form-control" name="total" onChange={props.handleInputChange} disabled={props.confirm ? true:false} />        
+                      <span className="helper-text text-danger" id="cNum">{props.alert}</span>
+                      <button className="btn btn-success btn-block" onClick={props.handleTotalConfirm} type="button" id="confirm" disabled={props.confirm ? true:false}>Confirm</button>        
+                  </div>
                   
-                      <span className="helper-text" id="cNum"></span>
-                  </div>
-                  <div className="row">
-                      <div className="form-group col-sm-4">
-                      <label htmlFor="cvv">CVV:</label>
-                      <div className="form-control" id="cvv" />
-                      <span className="helper-text" id="c_vv"></span>
-                      </div>
-                      <div className="form-group col-sm-4">
-                      <label htmlFor="expDate">Expiration</label>
-
-                      <div className="form-control" id="expDate" />
-                      <span className="helper-text" id="exp-date"></span>
-                      </div>
-                      <div className="form-group col-sm-4">
-                      <label htmlFor="zipCode">Zipcode:</label>
-                      <div  className="form-control" id="zipCode" />
-                      <span className="helper-text" id="zip-code"></span>
-                      </div>
-                  </div>
-                  <div className="row">
-                        <i className="col-sm-4">
-                        <i className=" fas fa-lock"> SECURE</i>
-                        <p style={{fontSize:"10px"}}>By clicking donate below you agree to make a payment to St. Anthony's Coptic Orthodox Church for the total specified on the right</p></i>
-                       
-                        <div className="col-sm-8">
-                              
-                              <div className="row dataImgs">
-                              
-                                    <i className="col-sm-2 iconCards fab fa-cc-visa"/>
-                                    <i className="col-sm-2 iconCards fab fa-cc-mastercard"/>
-                                    <i className="col-sm-2 iconCards fab fa-cc-discover"/>
-                                    
-                                    <i className="col-sm-2 iconCards fab fa-cc-paypal"/>
-                                    <i className="col-sm-2 iconCards fab fa-cc-amex"/>
-                                    
-                                    
-                                    
-                              </div>
-                        </div>
-                  </div>
                 </div>
              </div>                               
                                         

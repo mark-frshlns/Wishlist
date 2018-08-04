@@ -1,9 +1,9 @@
 .imgContainer{
-  background: url("/assets/Images/st-antn-church.png");
-  background-position: auto center;
+  background: url("/assets/Images/sanc.jpg");
+  background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 420px;
+  height: 600px;
 }
 .QouteContainer{
   text-align: center;
@@ -80,4 +80,11 @@
 }
 .textContainer p{
   line-height: 2.3;
+}
+
+@media only screen and (max-width:550px){
+    .overlayContent{
+      top:0;
+      right:0;
+    }
 }

@@ -26,10 +26,10 @@ export default class WishListNav extends Component {
                         <div className="row justify-content-start">
                               <ul className="nav nav-pills nav-fill col">
                                     <li className="nav-item">
-                                          <NavLink className="nav-link " style={{color:"white"}}  activeStyle={{backgroundColor:"#B99664",color:"rgba(50,50,50,0.6)",borderBottom:"0.08em solid orangered"}} exact to="/">Home</NavLink>
+                                          <NavLink className="nav-link " style={{color:"white"}}  activeStyle={{backgroundColor:"#B99664",color:"rgba(50,50,50,0.6)"}} exact to="/">Home</NavLink>
                                     </li>
                                     <li className="nav-item">
-                                          <NavLink className="nav-link " style={{color:"white"}} activeStyle={{backgroundColor:"#B99664",color:"rgba(50,50,50,0.6)",borderBottom:"0.08em solid orangered"}} to="/WishList">New Church Wishlist</NavLink>
+                                          <NavLink className="nav-link " style={{color:"white"}} activeStyle={{backgroundColor:"#B99664",color:"rgba(50,50,50,0.6)"}} to="/WishList">New Church Wishlist</NavLink>
                                     </li>
                               
                               

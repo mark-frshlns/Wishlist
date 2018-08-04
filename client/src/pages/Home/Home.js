@@ -19,8 +19,8 @@ const Home = (props)=>{
           </div>
         </div>
         <div className="row justify-content-center">
-                <div className="card col-sm-12 ">
-                    <div className="card-img imgContainer"  />
+                <div className="card col-sm-12 main">
+                    <div className="card-img imgContainer" />
                     <div className="card-img-overlay">
                         <div className="overlayContent">
                         <i><h2>Building Up,<br /> Reaching Out</h2></i>

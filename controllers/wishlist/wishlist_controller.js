@@ -2,20 +2,6 @@ const db = require('../../models');
 const sequelize = require('sequelize');
 const fs = require('fs');
 
-function verifyInventory(items,cb){
-   let result;
-    db.Item.findAll({where:{id:items}}).then((dataSet)=>{
-      console.log(dataSet[0].dataValues.payment_Percentage);
-            result = dataSet.every(row=>{
-              console.log(row);
-               return row.dataValues.payment_Percentage <= 100;
-            })
-            console.log(result);
-            cb(result);
-     }).catch(err=>{})
-
-  
-}
 module.exports = {
 
   findAllItems: function(req, res){
@@ -47,10 +33,6 @@ module.exports = {
       res.status(200).json(data);
     })
   },
-
-  findByCategoryId: function(req, res){
-
-  },
   updateItemRequest: function(req, res){
       let id = req.params.id;
       let data = req.body.item_requested;
@@ -60,33 +42,7 @@ module.exports = {
 
       })
   },
-  updateItemContribute: function(req, res){
-            let id = req.params.id;
-            let data = req.body.item_contributed;
-            console.log(data);
-            db.Item.findOne({where:{id:id}}).then(item=>{
-              console.log(item);
-                if(data > item.dataValues.item_requsted){
-                  res.status(301).json({msg:"greater than inventory"});
-                }else{
-                  db.Item.update({item_requested:item.item_requested-data,
-                                  },{
-                                    where:{id:id},returning:true
-                                  })
-                  .then((updatedItem)=>{
-                    console.log(updatedItem);
-                      res.status(200).json(updatedItem);
-                  })
-                  .catch(err=>{
-                    console.log(err);
-                    res.status(500);
-                  })
-                }
-            }).catch(err=>{
-              console.log(err);
-              res.status(500);
-            })
-  },
+
   deleteItem: function(req, res){
         db.Item.destroy({where:{id:req.params.id}}).then(num=>{
               res.status(200).json({msg:"deleted",data:num});
@@ -121,6 +77,36 @@ module.exports = {
     }).catch(err=>{
       res.status(304).json({msg:"Not Deleted",err:err});
     })
+  },
+  updateOnCheckOut: async function(req,res){
+      const itemsToUpdate = req.body.data;
+      const results = itemsToUpdate.map(async function(item){
+        return {
+          id:item.item_id,
+          isResolved: await db.Item.update({
+            totalFulfilled:sequelize.literal(`totalFulfilled+${item.total_amount}`)
+          },{where:{id:item.item_id}}).catch(err=>err)
+        }
+      })
+      let flag = results.length ;
+      for (let i=0; i<results.length; i++){
+              
+              console.log(flag);
+              results[i].then(response=>{
+                    if(response.isResolved[0] === 1){
+                      console.log(response)
+                      flag -= 1;
+                    }
+                    
+                    if(i === results.length-1 && flag === 0){
+                      res.status(200).json({msg:true});
+                    }else if( i === results.length-1 && flag > 0){
+                      res.json({msg:false}).status(304);
+                    }
+                    console.log(flag);
+              })
+      }
+      
   }
 
 }

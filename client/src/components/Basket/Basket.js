@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import { NavLink} from 'react-router-dom';
+
 import {default as BasketItem} from './BasketItem';
 import './Basket.css';
 class Basket extends Component{
- 
- 
+
  render()
  {
   return (
@@ -17,20 +17,21 @@ class Basket extends Component{
         
            <ul className="list-group">
                      <li className="nav-item">
-                             <button type="button" className="btn btn-block">Donate Any Amount</button>
+                             <button type="button" className="btn btn-block" onClick={this.props.cout}>Donate Any Amount</button>
                       </li>
+                     
           </ul>
               
            
             <ul className="list-group list-group-flush">
             {this.props.Basket.length ?  this.props.Basket.map((item,i)=>{
-              return <BasketItem  item={item} name={item.item_name} total={item.total_amount} remove={this.props.remove} quantity={item.item_purchase_amount} key={i} arrayIndex={i}/>
+              return <BasketItem  item={item} name={item.item_name} total={item.total_amount} remove={this.props.remove} quantity={item.quantity} key={i} arrayIndex={i}/>
             }): (<h6 style={{textAlign:"center"}}>Empty!</h6>)}
             </ul>
             {this.props.total === 0 ? null:
               (<div className="card-text list-group-item">
                 <h6><b>SubTotal</b>: ${this.props.total}</h6>
-                <button className="btn btn-success" type="button" >CheckOut</button>
+                <button className="btn btn-success" type="button" onClick={this.props.cout}>CheckOut</button>
               </div>)}
             
         </div>

@@ -27,9 +27,8 @@ router.route("/deletecategory/:id")
       
 router.route("/deleteitem/:id")
       .put(wishlist_controller.deleteItem);
-
-router.route("/updateitemContribute/:id")
-      .put(wishlist_controller.updateItemContribute);
 router.route("/updateitemRequest/:id")
       .put(wishlist_controller.updateItemRequest);
+router.route('/update')
+      .put(wishlist_controller.updateOnCheckOut);
 module.exports = router;

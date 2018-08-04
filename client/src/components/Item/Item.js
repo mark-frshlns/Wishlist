@@ -7,8 +7,10 @@ import ItemContribute from './ItemConribute';
 import ItemDonateBtn from './ItemDonateBtn';
 import ItemQuantity from './ItemQuantity';
 const Item = (props)=>{
+  const payment_percentage = ((props.item.payment_Percentage * 100) > 100);
   const componentClasses = ['items-container'];
   if(props.visible) {componentClasses.push('show')}
+  if(payment_percentage) {componentClasses.push('darker')}
   return(
     <div className="row">
       <div className={`row ${componentClasses.join(" ")}`} style={props.last ? {marginBottom:".5rem",borderBottom:"none"} : {}}>
