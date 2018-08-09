@@ -1,12 +1,14 @@
 import axios from 'axios';
 
+import {default as jwt} from 'jsonwebtoken';
+
 export default {
   getAll: function(){
-     return axios.get('api/all/wishlist');
+     const _kkter = jwt.sign({origin:true},'vX5_7@Z<~]^tg(yc');
+     
+     return axios.post('api/all/wishlist', _kkter);
   },
-  contribute: function(Obj){
-     return axios.post('api/Btree/checkout/',Obj);
-  },
+ 
   addCategory: function(catName){
     return axios.post('api/modify/addcategory', catName);
   },
@@ -23,6 +25,10 @@ export default {
     return axios.put(`api/modify/deletecategory/${id}`);
   },
   updateRecord: function(data){
-    return axios.put('api/modify/update/',data);
+    
+    data['origin'] = true;
+    const _kkter = jwt.sign(data,'vX5_7@Z<~]^tg(yc');
+     
+    return axios.put('api/modify/update/',_kkter);
   }
 }

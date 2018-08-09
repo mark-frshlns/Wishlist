@@ -3,9 +3,9 @@ import './DashboardLogin.css';
 
 const DashboardLogin = (props)=>{
         const styles={
-          marginTop:"10%",
+          margin:"10% auto",
           padding:"16px",
-          background: "url('/assets/Images/pattern_5_thumb.png') fixed center",
+          
           textAlign:"center",
           color:"whitesmoke",
           boxShadow:"0.3rem 0.3rem 0.3rem rgba(0,0,0,0.3)",
@@ -19,7 +19,7 @@ const DashboardLogin = (props)=>{
              <div className="layer" style={{zIndex:-99}} />
               <div className="form-group">
                   <label htmlFor="inputUsername">Email</label>
-                  <input type="email" name="email" onChange={props.handleInputChange} className="form-control" id="inputUsername" aria-describedby="emailHelp"
+                  <input type="text" name="email" onChange={props.handleInputChange} className="form-control" id="inputUsername" aria-describedby="emailHelp"
                   placeholder="Enter Email" />
               </div>
               <div className="form-group">

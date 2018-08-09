@@ -27,15 +27,7 @@ export default class Category extends Component {
           })
         }
       }
-      // submitDonateRequest = (id)=>{
-      //       const item_contributed = parseInt(document.getElementById("amount_picker"+id).value, 10);
-      //       console.log({id:id,item_contributed:item_contributed});
-      //       API.contribute({id:id,item_contributed:item_contributed}).then(res=>{
-      //               console.log(res);
-      //       }).catch(err=>{
-
-      //       });
-      // }
+    
 
       handleSelectedQuantityChange = (e)=>{
         

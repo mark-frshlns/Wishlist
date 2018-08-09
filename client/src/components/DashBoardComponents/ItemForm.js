@@ -40,10 +40,7 @@ const ItemForm = (props)=>{
             <input type="file" id="item_image_submit" placeholder="choose file..." name="item_image" onChange={props.handleInputChange}/>
             <span className="form-text text-muted">Only (JPEG, JPG, PNG) MAX SIZE 1MB</span>
 
-            <h6>OR...</h6>
-
-            <label htmlFor="item_image_url_submit">Enter Image URL</label>
-            <input type="text" className="form-control" name="item_imageUrl" placeholder="https://..." onChange={props.handleInputChange} id="item_image_url_submit" />
+            <span className={`form-text ${props.alert === 'success' ? 'text-success':'text-danger'}`}>{props.alert}</span>
             </div>
             <button type="button" className="btn btn-block btn-primary" onClick={props.handleSubmit}>Submit</button>
         </form>

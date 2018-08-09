@@ -9,10 +9,15 @@ const storage = multer.diskStorage({
       },
       filename: function(req,file, cb){
             cb(null, file.fieldname+'-'+Date.now()+path.extname(file.originalname));
-      }
+      },
+      
 })
 
-const upload = multer({storage:storage});
+const upload = multer({storage:storage,limits:{fileSize:1000*1000},
+      onError:function(err,next){
+            next(err);
+      }
+      });
 
 const wishlist_controller = require('../../controllers/wishlist/wishlist_controller');
 
@@ -27,8 +32,7 @@ router.route("/deletecategory/:id")
       
 router.route("/deleteitem/:id")
       .put(wishlist_controller.deleteItem);
-router.route("/updateitemRequest/:id")
-      .put(wishlist_controller.updateItemRequest);
+
 router.route('/update')
       .put(wishlist_controller.updateOnCheckOut);
 module.exports = router;
