@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes){
     let Item = sequelize.define('Item', {
-        item_name: DataTypes.STRING,
+        item_name: {type:DataTypes.STRING} ,
         item_price: DataTypes.DOUBLE,
         item_requested: DataTypes.INTEGER,
         totalRequested:{
