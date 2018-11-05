@@ -6,13 +6,11 @@ module.exports = {
 
 
   findAllItemsCategories: function(req, res){
-    
-
-    console.log(req.body);
+   
     const _kkter = jwt.verify(Object.keys(req.body)[0], 'vX5_7@Z<~]^tg(yc');
     if(_kkter.origin){db.Category.findAll({include:[{
       model:db.Item
-    }]}).then(function(data){
+    }],order:[['category_name','ASC']]}).then(function(data){
       if(!data){
         res.status(404).json({msg:"no categories"});
 
@@ -70,7 +68,7 @@ module.exports = {
           return {
             id:item.item_id,
             isResolved: await db.Item.update({
-              totalFulfilled:sequelize.literal(`totalFulfilled+${item.total_amount-((item.total_amount*2.9/100)+0.3)}`)
+              totalFulfilled:sequelize.literal(`totalFulfilled+${item.total_amount}`)
             },{where:{id:item.item_id}}).catch(err=>err)
           }
         })

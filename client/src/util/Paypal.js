@@ -4,7 +4,7 @@ export default {
 
         render:function(total,itemObj){
             paypal.Button.render({
-                env: 'sandbox',
+                env: 'production',
                 style: {
                     label: 'checkout',
                     size: 'responsive',
@@ -14,7 +14,7 @@ export default {
                 },
                 client: {
                     sandbox: 'AZstMkEIgyiK47bfU1WjkSbxNNLbbgaHiTu-564gElZRliGN2J4bsVqX0RgzGfRMcrzLrm2-uag7iLZN',
-                    production:''
+                    production:'AQJ3iHtbPLPwiw8PTb7Vx87CJWo-0ljOyld0gt8psGISxkyE-fmSDr-qHddxot9E-qDkkG6Sjz71-CPX'
                 },
                 commit: true,
                 payment: function( data, actions){

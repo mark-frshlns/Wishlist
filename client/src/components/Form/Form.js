@@ -15,7 +15,7 @@ const Form = (props)=>{
                             {props.data.map((cat,i)=>{
                                   return <optgroup label={cat.category_name} key={i}>
                                                 {cat.Items.map((item,i)=>{
-                                                      console.log(item);
+                                                      
                                                       if(item.payment_Percentage * 100 >= 100){
                                                             return null;
                                                       }else{

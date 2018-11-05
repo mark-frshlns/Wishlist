@@ -31,7 +31,7 @@ export default class Wishlist extends Component {
         this.hoverEffect();
         
         API.getAll().then(res=>{
-            
+            console.log(res.data);
             this.setState({
               data:res.data
             })

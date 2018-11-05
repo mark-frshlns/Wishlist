@@ -16,6 +16,7 @@ module.exports = function(sequelize, DataTypes){
           defaultValue:0
         },
         item_description: DataTypes.TEXT,
+        item_Url:DataTypes.TEXT,
         item_imageUrl: DataTypes.STRING
     },{
       

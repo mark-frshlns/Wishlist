@@ -4,6 +4,7 @@ import './forms.css';
 const ItemForm = (props)=>{
 
   return (
+    
     <div className="formContainer item_form">
         <form>
             <div className="form-group">
@@ -42,9 +43,10 @@ const ItemForm = (props)=>{
 
             <span className={`form-text ${props.alert === 'success' ? 'text-success':'text-danger'}`}>{props.alert}</span>
             </div>
+            </form>
             <button type="button" className="btn btn-block btn-primary" onClick={props.handleSubmit}>Submit</button>
-        </form>
-    
+        
+            
     </div>
   )
 }

@@ -23,6 +23,7 @@ export default class DashBoard extends Component {
       dashBoardComp: ""
   }
   componentDidMount (){
+    
     API.getAll().then(res=>{
       this.setState({data:res.data});
   }).catch(err=>{
@@ -31,16 +32,16 @@ export default class DashBoard extends Component {
   }
   login = (event)=>{
     event.preventDefault();
-    console.log('listen');
+    
     const username = this.state.email;
     const password = this.state.password;
     USERAPI.login(username, password).then(res=>{
-        console.log(res);
+        
         if(res.data.msg){
           this.setState({auth:true});
         }
     }).catch(err=>{
-        console.log(err);
+        
         alert("User Not Found contact admin!")
     })
   }
@@ -72,7 +73,7 @@ export default class DashBoard extends Component {
     console.log(categories);
     if(categories.indexOf(this.state.category_name.toLowerCase()) > -1){
       this.setState({alert:"Category Already Exists"});
-    }else if(this.state.category_name.search(/[^a-zA-Z]/) > -1){
+    }else if(this.state.category_name.search(/[^a-zA-Z][\s]/) > -1){
         this.setState({alert:'category can only have letters'});
     }else{
       API.addCategory({category_name:this.state.category_name})
@@ -95,7 +96,7 @@ export default class DashBoard extends Component {
   
   deleteItem = (e)=>{
     let id = e.target.id;
-    console.log(e.target.name);
+    
     if(e.target.name === "category"){
       API.deleteCategory(e.target.id).then(res=>{
         API.getAll().then(res=>{
@@ -128,14 +129,16 @@ export default class DashBoard extends Component {
   }
   handleItemSubmit = (e)=>{
     e.preventDefault();
-    console.log(this.state.item_obj);
+    
     if(Object.keys(this.state.item_obj).length < 6){
             this.setState({alert:"please fill missing fields"});
     }
-    else if((this.state.item_obj.item_name.search(/[^a-zA-Z]/) > -1) || (this.state.item_obj.item_description.search(/[^a-zA-Z]/) >-1)){
-      this.setState({alert:"item and item description can contain only letters"})
+    else if((this.state.item_obj.item_name.search(/[^a-zA-Z][\s][^0-9]/g) > -1)){
+      this.setState({alert:"item contain only English letters, spaces and numbers\n"})
     }
-      else { let form = document.querySelector('form');
+      else { 
+        let form = document.querySelector('form');
+        
         let data = new FormData(form);
         
         

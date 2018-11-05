@@ -2,8 +2,10 @@ import React from 'react';
 
 
 const ItemQuantity = (props)=>{
-      let max = props.item.item_requested;
+      
       const payment_percentage = ((props.item.payment_Percentage * 100) > 100);
+      let max = Math.ceil((props.item.totalRequested - props.item.payment_Percentage * props.item.totalRequested)/props.item.item_price);
+      console.log(max);
       return (
         <div className={props.col}>
               
