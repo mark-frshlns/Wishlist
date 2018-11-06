@@ -106,7 +106,7 @@ export default class Category extends Component {
                                  
                                   
                                   }}><i className={this.state.icon} /></span>
-                    <span style={{display:"inline-block",margin:"0.5%"}}>{`${this.state.name.toLowerCase()} (${this.state.items.length})`}</span>
+                    <span style={{display:"inline-block",margin:"0.5%"}}>{`${this.state.name.toUpperCase()}`}</span>
                 </div>
                 
               </div>
