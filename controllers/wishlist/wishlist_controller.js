@@ -1,10 +1,7 @@
 const db = require('../../models');
 const sequelize = require('sequelize');
-
 const jwt = require('jsonwebtoken');
 module.exports = {
-
-
   findAllItemsCategories: function(req, res){
    
     const _kkter = jwt.verify(Object.keys(req.body)[0], 'vX5_7@Z<~]^tg(yc');
@@ -13,7 +10,6 @@ module.exports = {
     }],order:[['category_name','ASC']]}).then(function(data){
       if(!data){
         res.status(404).json({msg:"no categories"});
-
       }
       res.status(200).json(data);
     })}else(res.status(404).json('not authorized'));
@@ -96,6 +92,24 @@ module.exports = {
       }
       
       
+  },
+  updateField:function(req,res){
+    const _kkter = jwt.verify(Object.keys(req.body)[0], 'vX5_7@Z<~]^tg(yc');
+    const data = _kkter.item;
+  
+    if(_kkter.origin){
+      db.Item.update({...data},{where:{
+        id:req.params.id
+      }}).then(result=>{
+            res.status(200);
+            res.json({msg:'updated',data:result})
+      }).catch(err=>{
+        console.log(err);
+        res.status(304)
+        res.json({msg:'none',data:err})
+      })
+    }
   }
+
 
 }

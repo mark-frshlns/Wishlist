@@ -20,7 +20,8 @@ export default class DashBoard extends Component {
       alert:"",
       category_name:"",
       item_obj:{},
-      dashBoardComp: ""
+      dashBoardComp: "",
+      cellId:""
   }
   componentDidMount (){
     
@@ -120,7 +121,24 @@ export default class DashBoard extends Component {
     }
    
   }
-
+  turnIntoInput = (e) => {
+        console.log(e.target.id);
+        this.setState({cellId:e.target.id});
+  }
+  handleItemUpdate = (e,id,field)=>{
+      if(e.key === 'Enter'){
+        console.log(`updating ${field} of item ${id} to ${e.target.value}`);
+        API.updateField(id,e.target.value,field).then(data=>{
+          console.log(data);
+          API.getAll().then(res=>{
+            this.setState({data:res.data,cellId:''});
+          })
+        }).catch(err=>{
+          console.log(err);
+        })
+      }
+      
+  }
   handleItemForm = (e)=>{
    
           let dummy = this.state.item_obj;
@@ -156,10 +174,10 @@ export default class DashBoard extends Component {
   currentComponent = ()=>{
 
     switch (this.state.dashBoardComp){
-      case "summary": return <DashBoardSummary data={this.state.data} Delete={this.deleteItem} />
+      case "summary": return <DashBoardSummary data={this.state.data} Delete={this.deleteItem} handleDoubleClick={this.turnIntoInput} inputCell={this.state.cellId} handleInputUpdate={this.handleItemUpdate}/>
       case "addItem": return <ItemForm data={this.state.data} alert={this.state.alert} handleInputChange={this.handleItemForm} handleSubmit={this.handleItemSubmit}/>
       case "addCategory": return <CategoryForm alert={this.state.alert} handleInputChange={this.handleInputChange} handleAdd={this.categoryAdd}/>
-      default: return <DashBoardSummary data={this.state.data} Delete={this.deleteItem} />
+      default: return <DashBoardSummary data={this.state.data} Delete={this.deleteItem} handleDoubleClick={this.turnIntoInput} inputCell={this.state.cellId} handleInputUpdate={this.handleItemUpdate}/>
     }
 
   }
@@ -168,14 +186,17 @@ export default class DashBoard extends Component {
       <div className="container-fluid">
         <Header />
         <WishListNav />
-        {!this.state.auth ? <DashboardLogin handleLogin={this.login} handleInputChange={this.handleInputChange}/>:
+        {this.state.auth ? <DashboardLogin handleLogin={this.login} handleInputChange={this.handleInputChange}/>:
           (
           <div className="row">
               <DashBoardMenu setView={this.setView} current={this.state.dashBoardComp} handleLogout={this.logout}/>
-              <div className="main col-md-10">
-                   {this.currentComponent()}
+              <div className="row">
+                <div className="main col-md-12">
+                    {this.currentComponent()}
+                </div>
               </div>
           </div>
+          
           )
         }
       <Footer />

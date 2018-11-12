@@ -10,7 +10,7 @@ const DashBoardSummary = (props)=>{
               
                 <div>
                     {props.data.map((cat,i)=>{
-                      return <Table cat={cat.category_name} catId={cat.id} items={cat.Items} key={i} Delete={props.Delete}/>
+                      return <Table cat={cat.category_name} catId={cat.id} items={cat.Items} key={i} Delete={props.Delete} handleDoubleClick={props.handleDoubleClick} inputCell={props.inputCell} handleInputUpdate={props.handleInputUpdate}/>
                     })}
                 </div>
                 

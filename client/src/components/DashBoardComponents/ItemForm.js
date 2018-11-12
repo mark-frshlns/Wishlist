@@ -37,6 +37,11 @@ const ItemForm = (props)=>{
             
             </div>
             <div className="form-group">
+            <label htmlFor="item_link">WEBSITE</label>
+            <input type="text" className="form-control" id="item_link" placeholder="http://..." name="item_Url" onChange={props.handleInputChange} />
+            
+            </div>
+            <div className="form-group">
             <label htmlFor="item_image_submit">UPLOAD IMAGE</label><br/>
             <input type="file" id="item_image_submit" placeholder="choose file..." name="item_image" onChange={props.handleInputChange}/>
             <span className="form-text text-muted">Only (JPEG, JPG, PNG) MAX SIZE 1MB</span>

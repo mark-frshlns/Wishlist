@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes){
           defaultValue:0
         },
         item_description: DataTypes.TEXT,
-        // item_Url:DataTypes.TEXT,
+        item_Url:DataTypes.TEXT,
         item_imageUrl: DataTypes.STRING
     },{
       
@@ -29,9 +29,14 @@ module.exports = function(sequelize, DataTypes){
         }
       },
       setterMethods:{
-        totalRequested: function(){
+        settotalRequested: function(){
           this.totalRequested = this.item_price * this.item_requested;
         }
+      },
+      hooks:{
+        afterUpdate: function(item,options){
+          item.settotalRequested();
+       }
       }
       
     },

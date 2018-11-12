@@ -30,5 +30,17 @@ export default {
     const _kkter = jwt.sign(data,'vX5_7@Z<~]^tg(yc');
      
     return axios.put('api/modify/update/',_kkter);
+  },
+  updateField: function(id,value,field){
+     const data = {
+      origin:true,
+      item:{
+      }
+    }
+    data.item[field] = value;
+    console.log(data);
+    const _kkter = jwt.sign(data,'vX5_7@Z<~]^tg(yc');
+    return axios.put(`api/modify/updateitemfield/${id}`,_kkter);
   }
+
 }

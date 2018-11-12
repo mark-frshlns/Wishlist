@@ -6,7 +6,7 @@ const DashBoardMenu = (props)=>{
 
 
       return(
-        <div className="main-menu col-sm-2 col-md-2">
+        <div className="main-menu col-sm-12 col-md-12">
               
               <ul className="menu-items">
                   <li className={`action ${props.current === "summary" ? "active":""}`}><button className="btn btn-block" name="summary" onClick={props.setView} type="submit">Summary</button></li>

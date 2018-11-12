@@ -29,7 +29,7 @@ router.route("/addcategory")
 
 router.route("/deletecategory/:id")
       .put(wishlist_controller.deleteCategory);
-      
+router.route("/updateitemfield/:id").put(wishlist_controller.updateField);    
 router.route("/deleteitem/:id")
       .put(wishlist_controller.deleteItem);
 
