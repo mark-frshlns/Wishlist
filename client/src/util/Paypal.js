@@ -14,7 +14,7 @@ export default {
                 },
                 client: {
                     sandbox: 'AZstMkEIgyiK47bfU1WjkSbxNNLbbgaHiTu-564gElZRliGN2J4bsVqX0RgzGfRMcrzLrm2-uag7iLZN',
-                    production:'AQJ3iHtbPLPwiw8PTb7Vx87CJWo-0ljOyld0gt8psGISxkyE-fmSDr-qHddxot9E-qDkkG6Sjz71-CPX'
+                    production:''
                 },
                 commit: true,
                 payment: function( data, actions){
